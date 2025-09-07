@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>En Palabras: Desconectados</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#101010] text-[#d1d1d1]">
+
+    <main id="main-container" class="w-full max-w-lg mx-auto flex flex-col items-center space-y-8">
+        <!-- Contenedor de la carta -->
+                <div id="card-container" class="card-container h-[24rem] relative">
+            <div class="relative drop-shadow-xl w-full h-full overflow-hidden rounded-xl bg-[#2f2f2f]">
+                <div id="card-inner" class="absolute flex flex-col justify-between p-6 text-white z-[1] rounded-xl inset-1.5 bg-[#1f1f1f]">
+                    <!-- La pregunta se ha movido para que ocupe el espacio y se centre -->
+                    <p id="question-text" class="flex items-center justify-center flex-grow text-xl font-medium leading-relaxed text-center">
+                        En palabras  Desconectados
+                    </p>
+                    <button id="dice-button" class="mx-auto">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </button>
+                </div>
+                <!-- El brillo ahora es más grande y más fuerte -->
+                <div id="card-gradient" class="absolute w-72 h-64 blur-[100px] -left-1/2 -top-1/2 card-gradient"></div>
+            </div>
+        </div>
+
+        <!-- Controles y botones -->
+        <div class="flex flex-col items-center space-y-4">
+            <div id="category-buttons" class="glass-radio-group">
+                <input type="radio" name="glass-radio" id="descomprimir">
+                <label for="descomprimir">Descomprimir</label>
+                <input type="radio" name="glass-radio" id="presentacion">
+                <label for="presentacion">Presentación</label>
+                <input type="radio" name="glass-radio" id="perspectiva">
+                <label for="perspectiva">Perspectiva</label>
+                <input type="radio" name="glass-radio" id="profundidad">
+                <label for="profundidad">Profundidad</label>
+                <div class="glass-glider"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/questions.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
