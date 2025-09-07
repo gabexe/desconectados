@@ -1,10 +1,9 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #101010;
-    color: #d1d1d1;
+    font-family: 'Poppins', sans-serif;
+    background-color: #000000;
+    color: #a9a9a9;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,14 +38,13 @@ body {
 
 /* Estilos del nuevo grupo de radio de vidrio */
 .glass-radio-group {
-    --bg: rgba(255, 255, 255, 0.06);
-    --text: #e5e5e5;
+    --text: #b0b0b0;
     display: flex;
     position: relative;
-    background: var(--bg);
+    background: #151515;
     border-radius: 1rem;
     backdrop-filter: blur(12px);
-    box-shadow: inset 1px 1px 4px rgba(255, 255, 255, 0.2), inset -1px -1px 6px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.3), inset -1px -1px 6px rgba(0, 0, 0, 0.7), 0 4px 12px rgba(0, 0, 0, 0.4);
     overflow: hidden;
     width: fit-content;
 }
@@ -128,7 +126,7 @@ body {
     width: 50px;
     height: 50px;
     background-color: transparent;
-    border: 2px solid #d1d1d1;
+    border: 2px solid #a9a9a9;
     border-radius: 10px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -148,7 +146,7 @@ body {
 .dot {
     width: 8px;
     height: 8px;
-    background-color: #d1d1d1;
+    background-color: #a9a9a9;
     border-radius: 50%;
 }
 
@@ -187,5 +185,22 @@ body {
     }
     #profundidad:checked ~ .glass-glider {
         transform: translate(100%, 100%);
+    }
+}
+
+#question-text {
+    background: linear-gradient(to right, #cfcfcf, #e6e6e6, #cfcfcf);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: wave-gradient 2s linear infinite;
+}
+
+@keyframes wave-gradient {
+    0% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: -200% center;
     }
 }
