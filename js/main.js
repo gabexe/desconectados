@@ -53,14 +53,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Evento para los nuevos botones de radio
-    categoryButtons.addEventListener('change', (e) => {
-        const selectedCategoryId = e.target.id;
-        const selectedCategory = categories.find(cat => cat.id === selectedCategoryId);
-        if (selectedCategory) {
-            if (!gameStarted) {
-                startGame(selectedCategory);
-            } else {
-                updateCard(selectedCategory);
+    categoryButtons.addEventListener('click', (e) => {
+        // Find the closest parent label or input that is part of the radio group
+        const targetLabel = e.target.closest('label');
+        const targetInput = e.target.closest('input[type="radio"]');
+
+        let selectedCategoryId = null;
+
+        if (targetInput) {
+            selectedCategoryId = targetInput.id;
+            // Ensure the radio button is checked
+            targetInput.checked = true;
+        } else if (targetLabel && targetLabel.htmlFor) {
+            selectedCategoryId = targetLabel.htmlFor;
+            // Find the corresponding input and check it
+            const inputElement = document.getElementById(selectedCategoryId);
+            if (inputElement) {
+                inputElement.checked = true;
+            }
+        }
+
+        if (selectedCategoryId) {
+            const selectedCategory = categories.find(cat => cat.id === selectedCategoryId);
+            if (selectedCategory) {
+                if (!gameStarted) {
+                    startGame(selectedCategory);
+                } else {
+                    updateCard(selectedCategory);
+                }
             }
         }
     });
