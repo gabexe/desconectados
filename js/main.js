@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Evento para los nuevos botones de radio
     categoryButtons.addEventListener('click', (e) => {
-        // Find the closest parent label or input that is part of the radio group
         const targetLabel = e.target.closest('label');
         const targetInput = e.target.closest('input[type="radio"]');
 
@@ -62,15 +61,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (targetInput) {
             selectedCategoryId = targetInput.id;
-            // Ensure the radio button is checked
             targetInput.checked = true;
         } else if (targetLabel && targetLabel.htmlFor) {
             selectedCategoryId = targetLabel.htmlFor;
-            // Find the corresponding input and check it
             const inputElement = document.getElementById(selectedCategoryId);
             if (inputElement) {
                 inputElement.checked = true;
             }
+        }
+
+        // Ripple effect logic
+        if (targetLabel) {
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+
+            // Get click position relative to the label
+            const rect = targetLabel.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - (size / 2);
+            const y = e.clientY - rect.top - (size / 2);
+
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+
+            targetLabel.appendChild(ripple);
+
+            // Remove the ripple element after the animation
+            ripple.addEventListener('animationend', () => {
+                ripple.remove();
+            });
         }
 
         if (selectedCategoryId) {

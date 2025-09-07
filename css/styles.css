@@ -204,3 +204,25 @@ body {
         background-position: -200% center;
     }
 }
+
+/* Ripple Effect */
+.glass-radio-group label {
+    position: relative; /* Needed for positioning the ripple span */
+    overflow: hidden; /* Hides the ripple outside the label */
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7); /* White ripple, semi-transparent */
+    animation: ripple-animation 0.6s linear forwards; /* Adjust duration as needed */
+    transform: scale(0);
+    pointer-events: none; /* Ensures clicks pass through the ripple */
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(2.5); /* How much the ripple expands */
+        opacity: 0;
+    }
+}
